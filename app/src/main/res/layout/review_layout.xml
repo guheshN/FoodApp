@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_Name"
         android:layout_width="186dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
@@ -13,7 +13,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_Review"
         android:layout_width="match_parent"
         android:layout_height="166dp"
         android:layout_alignParentStart="true"
@@ -23,7 +23,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_Score"
         android:layout_width="119dp"
         android:layout_height="39dp"
         android:layout_alignParentTop="true"

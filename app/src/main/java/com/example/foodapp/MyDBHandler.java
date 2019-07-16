@@ -12,7 +12,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public static  final int DATABASE_VERSION=1;
 
-    private static final String DATABASE_NAME= "account.db";
+    private static final String DATABASE_NAME= ".db";
 
     public static  final  String ACCOUNTS="Accounts";
 
