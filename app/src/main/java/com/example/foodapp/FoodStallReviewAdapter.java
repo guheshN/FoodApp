@@ -1,49 +1,74 @@
 package com.example.foodapp;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodStallReviewAdapter  extends RecyclerView.Adapter<ReviewViewHolder> {
-    private List<String> reviewList;
-    public FoodStallReviewAdapter(List<String> sl) {
+public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReviewAdapter.ReviewViewHolder>{
+    private static final String TAG ="FoodStallReviewAdapter";
 
-        this.reviewList = sl;
-    }
+    private ArrayList<String> mStallName = new ArrayList<>();
+    private ArrayList<String> mStallReview = new ArrayList<>();
+    private ArrayList<String> stallScore = new ArrayList<>();
+    private Context mContext;
 
-
-    @Override
-    public ReviewViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
-        View item = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.review_layout, parent, false);
-
-        return new ReviewViewHolder(item);
-    }
-
-    @Override
-    public void onBindViewHolder(ReviewViewHolder holder, int position)
-    {
-        String s = reviewList.get(position);
-         holder.name.setText(s);
+    public FoodStallReviewAdapter(Context Context, ArrayList<String> StallName, ArrayList<String> StallReview, ArrayList<String> stallScore) {
+        this.mStallName = StallName;
+        this.mStallReview = StallReview;
+        this.stallScore = stallScore;
+        this.mContext = Context;
     }
 
     @Override
-    public int getItemCount()
-    {
-        return reviewList.size();
+    public ReviewViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view =LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.review_layout, viewGroup,false);
+        ReviewViewHolder holder= new ReviewViewHolder(view);
+
+        return holder;
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
+        Log.d(TAG,"onBindViewHolder: Called.");
+
+        holder.stallName.setText(mStallName.get(position));
+
+
+
+    }
 
     @Override
-    public int getItemViewType(int position)
-    {
-        return 1;
+    public int getItemCount() {
+        return mStallName.size();
+    }
+
+    public class ReviewViewHolder extends RecyclerView.ViewHolder{
+
+        TextView stallName;
+        TextView stallReview;
+        TextView stallScore;
+        RelativeLayout parentLayout;
+        public ReviewViewHolder(@NonNull View itemView) {
+            super(itemView);
+            stallName= itemView.findViewById(R.id.tv_Name);
+            stallReview = itemView.findViewById(R.id.tv_Review);
+            stallScore = itemView.findViewById(R.id.tv_Score);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
+        }
     }
 
 }
+
+
