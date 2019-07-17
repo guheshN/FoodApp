@@ -21,7 +21,7 @@ public class FoodStallReviewAdapter  extends RecyclerView.Adapter<ReviewViewHold
     public ReviewViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View item = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.foodstallreview_layout, parent, false);
+                .inflate(R.layout.review_layout, parent, false);
 
         return new ReviewViewHolder(item);
     }
