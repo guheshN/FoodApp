@@ -7,12 +7,12 @@ import android.widget.TextView;
 public class ReviewViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
     public TextView review;
-    public TextView Score;
+    public TextView score;
 
     public ReviewViewHolder(View view){
         super(view);
-        name = view.findViewById(android.R.id.text1);
-        review = view.findViewById(android.R.id.text2);
-        Score = view.findViewById(android.R.id.text7);
+        name = view.findViewById(R.id.tv_Name);
+        review = view.findViewById(R.id.tv_Review);
+        score = view.findViewById(R.id.tv_Score);
     }
 }
