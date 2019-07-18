@@ -44,6 +44,8 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
         Log.d(TAG,"onBindViewHolder: Called.");
 
         holder.stallName.setText(mStallName.get(position));
+        holder.stallReview.setText(mStallReview.get(position));
+        holder.stallScore.setText(stallScore.get(position));
 
 
 

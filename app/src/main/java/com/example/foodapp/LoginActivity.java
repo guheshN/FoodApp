@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //Intent intent = new Intent(LoginActivity.this,FoodCourtView.class);
+        //startActivity(intent);
 
         tv_NewUser = (TextView) findViewById(R.id.textView_Newuser);
         tv_NewUser.setOnTouchListener(this);
