@@ -31,9 +31,11 @@ public class StallRV extends AppCompatActivity {
         stall_List.add(s5);
         stall_List.add(s6);
 
+        //Pass the position to this activity
         Intent intent = getIntent();
         int position = Integer.parseInt(intent.getStringExtra("position"));
 
+        //get the right stalls for the right food court
         for (Stalls s : stall_List) {
             if(s.getCourtID() == position){
                 temp_List.add(s);
@@ -49,7 +51,9 @@ public class StallRV extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         stallView.setLayoutManager(layoutManager);
 
+        //set condition for food court that does not have information
         if(temp_List.size() == 0){
+            //Bring them to error page
             Intent error = new Intent(StallRV.this,SorryNotAvailablePage.class);
             startActivity(error);
         }
@@ -57,6 +61,24 @@ public class StallRV extends AppCompatActivity {
             //set Adapter + add data into recycler view
             StallAdapter sadapter = new StallAdapter(StallRV.this,temp_List);
             stallView.setAdapter(sadapter);
+            //when rv is clicked
+            sadapter.setOnClickListener(new StallAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    //Bring to new intent with required information
+                    Intent review_Intent = new Intent(StallRV.this, FoodStallReview.class);
+                    Stalls selected_Stall = temp_List.get(position);
+                    //set info to variables
+                    String stall_Name = selected_Stall.getStallName();
+                    String stall_Des = selected_Stall.getStallDes();
+                    String pos = "" + position;
+                    //bring info to intent
+                    review_Intent.putExtra("position",pos);
+                    review_Intent.putExtra("name",stall_Name);
+                    review_Intent.putExtra("des",stall_Des);
+                    startActivity(review_Intent);
+                }
+            });
         }
 
 

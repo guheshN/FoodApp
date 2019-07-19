@@ -14,6 +14,11 @@ public class StallAdapter extends RecyclerView.Adapter<StallAdapter.StallViewHol
     //set Variables
     private ArrayList<Stalls> stall_List;
     private Context context;
+    private OnItemClickListener slistener;
+
+    public void setOnClickListener(OnItemClickListener listener){
+        slistener = listener;
+    }
 
     //Constructor
     public StallAdapter(Context c, ArrayList<Stalls> slist){
@@ -24,7 +29,7 @@ public class StallAdapter extends RecyclerView.Adapter<StallAdapter.StallViewHol
     @Override
     public StallViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(context).inflate(R.layout.foodstall_layout,viewGroup,false);
-        StallAdapter.StallViewHolder svh = new StallAdapter.StallViewHolder(v);
+        StallAdapter.StallViewHolder svh = new StallAdapter.StallViewHolder(v,slistener);
         return svh;
     }
 
@@ -41,11 +46,26 @@ public class StallAdapter extends RecyclerView.Adapter<StallAdapter.StallViewHol
 
     public class StallViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        public StallViewHolder(View itemview){
+        public StallViewHolder(View itemview, final OnItemClickListener listener){
             super(itemview);
             //link Views to view in layout
             name = itemview.findViewById(R.id.tv_StallName);
-        }
 
+            itemview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
     }
 }

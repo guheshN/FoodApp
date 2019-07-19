@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class CourtAdapter extends Adapter<CourtAdapter.CourtViewHolder>{
     //set variables
     private ArrayList<Court> courtList;
-    private ArrayList<Stalls> stallList;
     private Context context;
     private OnItemClickListener cListener;
 

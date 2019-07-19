@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReviewAdapter.ReviewViewHolder>{
     private static final String TAG ="FoodStallReviewAdapter";
 
-    private ArrayList<FoodstallReviews> foodstalllist;
+    private ArrayList<Review> foodstalllist;
     private Context context;
 
-    public FoodStallReviewAdapter(Context f, ArrayList<FoodstallReviews> fList) {
+    public FoodStallReviewAdapter(Context f, ArrayList<Review> fList) {
         foodstalllist = fList;
         context = f;
     }
@@ -35,9 +34,13 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int i) {
         Log.d(TAG,"onBindViewHolder: Called.");
 
-        holder.stallName.setText(foodstalllist.get(i).getcStallName());
-        holder.stallReview.setText(foodstalllist.get(i).getcStallReview());
-        holder.stallScore.setText(foodstalllist.get(i).getcStallScore());
+        //String user_id = Integer.toString(foodstalllist.get(i).getUserID());
+        String anon = "Anonymous";
+        String review = foodstalllist.get(i).getStallReview();
+        String score = foodstalllist.get(i).getStallScore();
+        holder.userID.setText(anon);
+        holder.stallReview.setText(review);
+        holder.stallScore.setText(score);
 
 
 
@@ -50,12 +53,12 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
 
     public class ReviewViewHolder extends RecyclerView.ViewHolder{
 
-        TextView stallName;
+        TextView userID;
         TextView stallReview;
         TextView stallScore;
         public ReviewViewHolder( View itemView) {
             super(itemView);
-            stallName= itemView.findViewById(R.id.tv_Name);
+            userID= itemView.findViewById(R.id.tv_Name);
             stallReview = itemView.findViewById(R.id.tv_Review);
             stallScore = itemView.findViewById(R.id.tv_Score);
         }
