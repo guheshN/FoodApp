@@ -1,25 +1,21 @@
 package com.example.foodapp;
 
-import android.content.Context;
-import android.icu.lang.UCharacter;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CourtAndStallsRV extends AppCompatActivity {
+public class CourtRV extends AppCompatActivity{
     ArrayList<Court> court_List = new ArrayList<>();
-    ArrayList<Stalls> stall_list = new ArrayList<>();
+    ArrayList<Stalls> stall_List = new ArrayList<>();
+    ArrayList<Stalls> temp_List = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_court_stall_rv);
+        setContentView(R.layout.activity_court_rv);
         //hardcode court data
         Court c1 = new Court(R.drawable.fc,"FoodClub");
         Court c2 = new Court(R.drawable.munch,"Munch");
@@ -38,15 +34,15 @@ public class CourtAndStallsRV extends AppCompatActivity {
         Stalls s5 = new Stalls(4,0,"Henry's Western","Good Foodie!!",0.0);
         Stalls s6 = new Stalls(5,0,"MiniWok","Oily Good",0.0);
         //add into Stall List
-        stall_list.add(s1);
-        stall_list.add(s2);
-        stall_list.add(s3);
-        stall_list.add(s4);
-        stall_list.add(s5);
-        stall_list.add(s6);
+        stall_List.add(s1);
+        stall_List.add(s2);
+        stall_List.add(s3);
+        stall_List.add(s4);
+        stall_List.add(s5);
+        stall_List.add(s6);
 
         //find recyclerview in layout
-        RecyclerView courtstallView = findViewById(R.id.view_Court);
+        RecyclerView courtstallView = findViewById(R.id.view_Stall);
 
         //set all layout with same size
         courtstallView.setHasFixedSize(true);
@@ -56,17 +52,20 @@ public class CourtAndStallsRV extends AppCompatActivity {
         courtstallView.setLayoutManager(layoutManager);
 
         //set Adapter + add data into recycler view
-        CourtAdapter cadapter = new CourtAdapter(CourtAndStallsRV.this,court_List);
+        CourtAdapter cadapter = new CourtAdapter(CourtRV.this,court_List);
         courtstallView.setAdapter(cadapter);
 
         //When rv is clicked
-        courtstallView.setOnClickListener(new View.OnClickListener() {
+        cadapter.setOnItemClickListener(new CourtAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(CourtAndStallsRV.this, "it works", Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position) {
+                Intent intent = new Intent(CourtRV.this,StallRV.class);
+                String pos = "" + position;
+                intent.putExtra("position",pos);
+                startActivity(intent);
             }
         });
 
-
     }
+
 }

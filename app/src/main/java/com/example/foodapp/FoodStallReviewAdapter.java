@@ -24,7 +24,7 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
     }
 
     @Override
-    public ReviewViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ReviewViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v =LayoutInflater.from(context).inflate(R.layout.review_layout, viewGroup,false);
         ReviewViewHolder holder= new ReviewViewHolder(v);
 
@@ -53,7 +53,6 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
         TextView stallName;
         TextView stallReview;
         TextView stallScore;
-        RelativeLayout parentLayout;
         public ReviewViewHolder( View itemView) {
             super(itemView);
             stallName= itemView.findViewById(R.id.tv_Name);
