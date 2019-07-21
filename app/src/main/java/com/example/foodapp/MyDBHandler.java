@@ -59,6 +59,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
+        db.execSQL("INSERT INTO" + FOODCOURT + "(" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
+
     }
 
     @Override

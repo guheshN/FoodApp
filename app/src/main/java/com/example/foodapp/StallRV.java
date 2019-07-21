@@ -28,7 +28,7 @@ public class StallRV extends AppCompatActivity {
         int court_position = GetStalls(stall_List,temp_List);
 
         //set RV
-        SetRecyclerView(temp_List,court_position);
+        SetRecyclerView(temp_List,court_position,userid);
 
         //set Return button
         Button return_page = findViewById(R.id.btn_return_page);
@@ -72,7 +72,7 @@ public class StallRV extends AppCompatActivity {
         return position;
     }
 
-    public void SetRecyclerView(ArrayList<Stalls> tlist, final int cposition){
+    public void SetRecyclerView(ArrayList<Stalls> tlist, final int cposition,final String uid){
         //find recyclerview in layout
         RecyclerView stallView = findViewById(R.id.view_Stall);
 
@@ -106,6 +106,7 @@ public class StallRV extends AppCompatActivity {
                     String pos = "" + position;
                     //bring info to intent
                     review_Intent.putExtra("courtposition",Integer.toString(cposition));
+                    review_Intent.putExtra("userid",uid);
                     review_Intent.putExtra("position",pos);
                     review_Intent.putExtra("name",stall_Name);
                     review_Intent.putExtra("des",stall_Des);

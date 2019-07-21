@@ -34,17 +34,21 @@ public class FoodStallReview extends AppCompatActivity {
             //review_List.add(review);
             String review = intent.getStringExtra("review");
             String score = intent.getStringExtra("score");
+            String userid = intent.getStringExtra("userid");
             final String court_position = intent.getStringExtra("courtposition");
             final String stall_name = intent.getStringExtra("name");
             final String stall_des = intent.getStringExtra("des");
             final int position = Integer.parseInt(intent.getStringExtra("position"));
 
+            Review new_review = new Review(0,position,Integer.parseInt(userid),review,score);
+
             setLayoutText(stall_name,stall_des);
             setAdapter(position,review_List,temp_List);
-            PostReview(position,stall_name,stall_des,court_position);
+            PostReview(position,stall_name,stall_des,court_position,userid);
         }
         else{
             //get information from StallRV activity
+            String userid = intent.getStringExtra("userid");
             final String court_position = intent.getStringExtra("courtposition");
             final String stall_name = intent.getStringExtra("name");
             final String stall_des = intent.getStringExtra("des");
@@ -52,7 +56,7 @@ public class FoodStallReview extends AppCompatActivity {
 
             setLayoutText(stall_name,stall_des);
             setAdapter(position,review_List,temp_List);
-            PostReview(position,stall_name,stall_des,court_position);
+            PostReview(position,stall_name,stall_des,court_position,userid);
         }
 
         Button return_btn = findViewById(R.id.btn_return);
@@ -110,13 +114,14 @@ public class FoodStallReview extends AppCompatActivity {
         FoodstallReviews.setAdapter(fadapter);
     }
 
-    public void PostReview(final int i, final String n, final String d, final String cp){
+    public void PostReview(final int i, final String n, final String d, final String cp, final String uid){
         //set button to bring to add review activity
         final Button post_review_btn = findViewById(R.id.btn_PostReview);
         post_review_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent post_review = new Intent(FoodStallReview.this, PostReview.class);
+                post_review.putExtra("userid",uid);
                 post_review.putExtra("reviewid",Integer.toString(temp_List.size()));
                 post_review.putExtra("courtposition",cp);
                 post_review.putExtra("position",Integer.toString(i));
