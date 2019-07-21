@@ -65,6 +65,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Poolside" + "," + 0 + ")");
 
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "FriedMasterChicken" + "," + 0 + "," + "Chickies" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "Western" + "," + 0 + "," + "ChickenChop" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MalayFood" + "," + 0 + "," + "NasiLemak" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MalaHotpot" + "," + 0 + "," + "Mala" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "Japanese" + "," + 0 + "," + "HotPlate" + ")");
 
     }
 
