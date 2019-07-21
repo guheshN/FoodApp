@@ -27,6 +27,7 @@ public class FoodStallReview extends AppCompatActivity {
         final Intent intent = getIntent();
         //check the intent is coming from which activity
         String check_activity = intent.getStringExtra("class");
+        final String userid = intent.getStringExtra("userid");
         if(check_activity.equals("postreview")){
             //get information from PostReview activity
             //Review review = (Review) intent.getSerializableExtra(PostReview.serial_key);
@@ -34,7 +35,6 @@ public class FoodStallReview extends AppCompatActivity {
             //review_List.add(review);
             String review = intent.getStringExtra("review");
             String score = intent.getStringExtra("score");
-            String userid = intent.getStringExtra("userid");
             final String court_position = intent.getStringExtra("courtposition");
             final String stall_name = intent.getStringExtra("name");
             final String stall_des = intent.getStringExtra("des");
@@ -49,7 +49,6 @@ public class FoodStallReview extends AppCompatActivity {
         }
         else{
             //get information from StallRV activity
-            String userid = intent.getStringExtra("userid");
             final String court_position = intent.getStringExtra("courtposition");
             final String stall_name = intent.getStringExtra("name");
             final String stall_des = intent.getStringExtra("des");
@@ -63,9 +62,10 @@ public class FoodStallReview extends AppCompatActivity {
         Button return_btn = findViewById(R.id.btn_return);
         return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v ) {
                 Intent return_stall = new Intent(FoodStallReview.this,StallRV.class);
                 return_stall.putExtra("class","foodreview");
+                return_stall.putExtra("userid", userid);
                 return_stall.putExtra("courtposition",intent.getStringExtra("courtposition"));
                 startActivity(return_stall);
             }

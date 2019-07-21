@@ -18,7 +18,7 @@ public class StallRV extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stall_rv);
         Intent intent = getIntent();
-        String userid = intent.getStringExtra("userid");
+        final String userid = intent.getStringExtra("userid");
 
         //get data to list
         CodeData(stall_List);
@@ -36,6 +36,7 @@ public class StallRV extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent return_intent = new Intent(StallRV.this,CourtRV.class);
+                return_intent.putExtra("userid",userid);
                 startActivity(return_intent);
             }
         });
