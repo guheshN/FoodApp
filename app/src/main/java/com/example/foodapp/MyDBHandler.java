@@ -15,8 +15,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME= "foodie.db";
 
-    private final int DATABASE_ACESS = 0;
-
     //Variables for User table
     public static  final String USER= "User";
     public static  final String COLUMN_USER_ID ="UserID";
@@ -61,7 +59,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
-        db.execSQL("INSERT INTO  FOODCOURT  (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
+        db.execSQL("INSERT INTO" + FOODCOURT + "(" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
 
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "FriedMasterChicken" + "," + 0 + "," + "Chickies" + ")");
 
