@@ -102,6 +102,23 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
+    public boolean insertStall(int StallID,String StallName,String StallDesc,double StallScore)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_STALL_ID,StallID);
+        contentValues.put(COLUMN_STALL_NAME,StallName);
+        contentValues.put(COLUMN_STALL_DESCRIPTION,StallDesc);
+        contentValues.put(COLUMN_STALL_SCORE,StallScore);
+        long result = db.insert(FOODSTALL,null,contentValues);
+        if (result==-1)
+            return false;
+        else
+            return true;
+
+    }
+
+
     /*public boolean deleteAccount(String username)
     {
         boolean result = false;
