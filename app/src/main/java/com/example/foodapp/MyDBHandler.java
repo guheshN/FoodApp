@@ -59,16 +59,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
-        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
-        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Poolside" + "," + 0 + ")");
-        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "MakanPlace" + "," + 0 + ")");
-        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Munch" + "," + 0 + ")");
-
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_COURT_ID+ "," + COLUMN_STALL_ID + "," + COLUMN_STALL_NAME + "," + COLUMN_STALL_DESCRIPTION + "," + COLUMN_STALL_SCORE+ "," + COLUMN_STALL_PICTURE + ")"  + "VALUES" +"(" + 1 +","+ 1 +","+"ChickenRice"+","+"Delicious+Chicken+rice"+","+ 10 +")");
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_COURT_ID+ "," + COLUMN_STALL_ID + "," + COLUMN_STALL_NAME + "," + COLUMN_STALL_DESCRIPTION + "," + COLUMN_STALL_SCORE+ "," + COLUMN_STALL_PICTURE + ")"  + "VALUES" +"(" + 2 +","+ 2 +","+"MiniWok"+","+"Delicious+Chicken+rice"+","+ 10 +")");
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_COURT_ID+ "," + COLUMN_STALL_ID + "," + COLUMN_STALL_NAME + "," + COLUMN_STALL_DESCRIPTION + "," + COLUMN_STALL_SCORE+ "," + COLUMN_STALL_PICTURE + ")"  + "VALUES" +"(" + 3 +","+ 3 +","+"Western"+","+"Delicious+Chicken+rice"+","+ 10 +")");
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_COURT_ID+ "," + COLUMN_STALL_ID + "," + COLUMN_STALL_NAME + "," + COLUMN_STALL_DESCRIPTION + "," + COLUMN_STALL_SCORE+ "," + COLUMN_STALL_PICTURE + ")"  + "VALUES" +"(" + 4 +","+ 4 +","+"AyamPeyek"+","+"Delicious+Chicken+rice"+","+ 10 +")");
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_COURT_ID+ "," + COLUMN_STALL_ID + "," + COLUMN_STALL_NAME + "," + COLUMN_STALL_DESCRIPTION + "," + COLUMN_STALL_SCORE+ "," + COLUMN_STALL_PICTURE + ")"  + "VALUES" +"(" + 5 +","+ 5 +","+"BanMian"+","+"Delicious+Chicken+rice"+","+ 10 +")");
+        db.execSQL("INSERT INTO" + FOODCOURT + "(" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
 
     }
 

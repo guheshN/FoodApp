@@ -41,6 +41,7 @@ public class FoodStallReview extends AppCompatActivity {
             final int position = Integer.parseInt(intent.getStringExtra("position"));
 
             Review new_review = new Review(0,position,Integer.parseInt(userid),review,score);
+            review_List.add(new_review);
 
             setLayoutText(stall_name,stall_des);
             setAdapter(position,review_List,temp_List);
