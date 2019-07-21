@@ -69,7 +69,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "Waffles" + "," + 0 + "," + "IceCream" + ")");
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "CanopyCoffeeClub" + "," + 0 + "," + "Drinks" + ")");
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "HenryWestern" + "," + 0 + "," + "GoodFoodie" + ")");
-        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MiniWok" + "," + 0 + "," + "Oily Good" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MiniWok" + "," + 0 + "," + "OilyGood" + ")");
 
     }
 
