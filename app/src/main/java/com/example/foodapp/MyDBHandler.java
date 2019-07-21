@@ -55,13 +55,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_FOODCOURT_TABLE = "create table " + FOODCOURT +"(" + COLUMN_COURT_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_COURT_NAME +"\t TEXT," + COLUMN_COURT_PICTURE +"\t INT" +")";
         db.execSQL(CREATE_FOODCOURT_TABLE);
         //create food stall table
-        String CREATE_FOODSTALL_TABLE = "create table " + FOODSTALL +"(" + COLUMN_STALL_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_STALL_NAME +"\t TEXT," + COLUMN_STALL_PICTURE +"\t INT," + COLUMN_STALL_SCORE + "\t FLOAT," + COLUMN_STALL_DESCRIPTION + "\t TEXT" + ")";
+        String CREATE_FOODSTALL_TABLE = "create table " + FOODSTALL +"(" + COLUMN_STALL_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_STALL_NAME +"\t TEXT," + COLUMN_STALL_PICTURE +"\t INT," + COLUMN_STALL_DESCRIPTION + "\t TEXT" + ")";
         db.execSQL(CREATE_FOODSTALL_TABLE);
         //create review table
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
         db.execSQL("INSERT INTO  FOODCOURT  (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
+
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "FriedMasterChicken" + "," + 0 + "," + "Chickies" + ")");
 
     }
 
