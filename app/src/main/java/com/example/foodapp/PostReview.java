@@ -38,13 +38,15 @@ public class PostReview extends AppCompatActivity {
                 String scoreTxt = et_Score.getText().toString();
                 String reviewTxt = et_Review.getText().toString();
 
-                Review review1 = new Review(review_ID,position,1,reviewTxt,scoreTxt);
-                Log.v(TAG,"Review:" + review1.getStallReview() + "'" + review1.getStallScore());
+               // Review review1 = new Review(review_ID,position,1,reviewTxt,scoreTxt);
+                //Log.v(TAG,"Review:" + review1.getStallReview() + "'" + review1.getStallScore());
 
                 Intent review_page = new Intent(PostReview.this,FoodStallReview.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(serial_key,review1);
-                review_page.putExtras(bundle);
+                //Bundle bundle = new Bundle();
+                //bundle.putSerializable(serial_key,review1);
+                //review_page.putExtras(bundle);
+                review_page.putExtra("review",reviewTxt);
+                review_page.putExtra("score",scoreTxt);
                 review_page.putExtra("class","postreview");
                 review_page.putExtra("courtposition",court_position);
                 review_page.putExtra("position",Integer.toString(position));

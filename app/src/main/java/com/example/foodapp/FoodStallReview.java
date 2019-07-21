@@ -24,16 +24,16 @@ public class FoodStallReview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_stall_review);
         Log.d(TAG,"onCreate: started.");
-
-
         final Intent intent = getIntent();
         //check the intent is coming from which activity
         String check_activity = intent.getStringExtra("class");
-        if(check_activity == "postreview"){
+        if(check_activity.equals("postreview")){
             //get information from PostReview activity
-            Review review = (Review) intent.getSerializableExtra(PostReview.serial_key);
-            Log.v(TAG,"Review:" + review.getStallReview() + "'" + review.getStallScore());
-            review_List.add(review);
+            //Review review = (Review) intent.getSerializableExtra(PostReview.serial_key);
+            //Log.v(TAG,"Review:" + review.getStallReview() + "'" + review.getStallScore());
+            //review_List.add(review);
+            String review = intent.getStringExtra("review");
+            String score = intent.getStringExtra("score");
             final String court_position = intent.getStringExtra("courtposition");
             final String stall_name = intent.getStringExtra("name");
             final String stall_des = intent.getStringExtra("des");

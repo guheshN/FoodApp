@@ -25,9 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent intent = getIntent();
-        //Intent intent = new Intent(LoginActivity.this, CourtRV.class);
-        //startActivity(intent);
+        //set image in layout
         ImageView app_icon = findViewById(R.id.app_Icon);
         app_icon.setImageResource(R.drawable.app_icon);
 
@@ -58,7 +56,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
         //if(isValidUsername(etUsername.getText().toString()) && isValidPassword(etPassword.getText().toString()))
         if (isValidUser(user, pass))
         {
+            UserData userData = dbHandler.findUser(user);
             Intent intent= new Intent(LoginActivity.this, CourtRV.class);
+            intent.putExtra("userid",Integer.toString(userData.getUserID()));
             Toast.makeText(this, "Valid User", Toast.LENGTH_LONG).show();
             startActivity(intent);
 

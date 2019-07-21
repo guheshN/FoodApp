@@ -17,6 +17,8 @@ public class StallRV extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stall_rv);
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
 
         //get data to list
         CodeData(stall_List);

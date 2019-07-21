@@ -18,10 +18,15 @@ public class CourtRV extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_rv);
+        Intent intent = getIntent();
+        String userid = intent.getStringExtra("userid");
+
         //get data method
         CodeData(court_List);
         //add to RV method
-        courtRV(court_List);
+        courtRV(court_List, userid);
+
+
 
         //set logout button
         Button logout = findViewById(R.id.btn_LogoOut);
@@ -38,7 +43,7 @@ public class CourtRV extends AppCompatActivity{
 
     }
 
-    public void CodeData(ArrayList<Court> clist){
+    public void CodeData(ArrayList<Court> clist ){
         //hardcode court data
         Court c1 = new Court(R.drawable.fc,"FoodClub");
         Court c2 = new Court(R.drawable.munch,"Munch");
@@ -51,7 +56,7 @@ public class CourtRV extends AppCompatActivity{
         court_List.add(c4);
     }
 
-    public void courtRV(ArrayList<Court> clist){
+    public void courtRV(ArrayList<Court> clist, final String uid){
         //find recyclerview in layout
         RecyclerView courtstallView = findViewById(R.id.view_Stall);
 
@@ -72,6 +77,7 @@ public class CourtRV extends AppCompatActivity{
             public void onItemClick(int position) {
                 Intent intent = new Intent(CourtRV.this,StallRV.class);
                 String pos = "" + position;
+                intent.putExtra("userid", uid);
                 intent.putExtra("courtposition",pos);
                 intent.putExtra("class","courtrv");
                 startActivity(intent);
