@@ -2,13 +2,13 @@ package com.example.foodapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +28,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
         Intent intent = getIntent();
         //Intent intent = new Intent(LoginActivity.this, CourtRV.class);
         //startActivity(intent);
+        ImageView app_icon = findViewById(R.id.app_Icon);
+        app_icon.setImageResource(R.drawable.app_icon);
 
         tv_NewUser = (TextView) findViewById(R.id.textView_Newuser);
         tv_NewUser.setOnTouchListener(this);
