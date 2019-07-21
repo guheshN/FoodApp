@@ -59,9 +59,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
-        db.execSQL("INSERT INTO" + FOODCOURT + "(" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
+        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Foodclub" + "," + 0 + ")");
+        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "MakanPlace" + "," + 0 + ")");
+        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Munch" + "," + 0 + ")");
+        db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")"  + "VALUES" +"(" + "Poolside" + "," + 0 + ")");
 
         db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "FriedMasterChicken" + "," + 0 + "," + "Chickies" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MalayStall" + "," + 0 + "," + "NasiLemak" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "Waffles" + "," + 0 + "," + "IceCream" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "CanopyCoffeeClub" + "," + 0 + "," + "Drinks" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "HenryWestern" + "," + 0 + "," + "GoodFoodie" + ")");
+        db.execSQL("INSERT INTO FOODSTALL (" + COLUMN_STALL_NAME + "," + COLUMN_COURT_PICTURE + "," + COLUMN_STALL_DESCRIPTION+ ") VALUES" + "(" + "MiniWok" + "," + 0 + "," + "OilyGood" + ")");
 
     }
 
