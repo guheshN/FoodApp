@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class FoodStallReview extends AppCompatActivity {
-    private  static final String TAG ="FoodStallReview";
+    private  static final String TAG ="FoodStallReview.java";
     ArrayList<Review> review_List = new ArrayList<>();
     ArrayList<Review> temp_List = new ArrayList<>();
     TextView name ;
@@ -25,35 +25,73 @@ public class FoodStallReview extends AppCompatActivity {
         setContentView(R.layout.activity_food_stall_review);
         Log.d(TAG,"onCreate: started.");
 
-        //get information from StallRV activity
-        Intent intent = getIntent();
-        String stall_name = intent.getStringExtra("name");
-        String stall_des = intent.getStringExtra("des");
-        int position = Integer.parseInt(intent.getStringExtra("position"));
 
+        final Intent intent = getIntent();
+        //check the intent is coming from which activity
+        String check_activity = intent.getStringExtra("class");
+        if(check_activity == "postreview"){
+            //get information from PostReview activity
+            Review review = (Review) intent.getSerializableExtra(PostReview.serial_key);
+            Log.v(TAG,"Review:" + review.getStallReview() + "'" + review.getStallScore());
+            review_List.add(review);
+            final String court_position = intent.getStringExtra("courtposition");
+            final String stall_name = intent.getStringExtra("name");
+            final String stall_des = intent.getStringExtra("des");
+            final int position = Integer.parseInt(intent.getStringExtra("position"));
+
+            setLayoutText(stall_name,stall_des);
+            setAdapter(position,review_List,temp_List);
+            PostReview(position,stall_name,stall_des,court_position);
+        }
+        else{
+            //get information from StallRV activity
+            final String court_position = intent.getStringExtra("courtposition");
+            final String stall_name = intent.getStringExtra("name");
+            final String stall_des = intent.getStringExtra("des");
+            final int position = Integer.parseInt(intent.getStringExtra("position"));
+
+            setLayoutText(stall_name,stall_des);
+            setAdapter(position,review_List,temp_List);
+            PostReview(position,stall_name,stall_des,court_position);
+        }
+
+        Button return_btn = findViewById(R.id.btn_return);
+        return_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent return_stall = new Intent(FoodStallReview.this,StallRV.class);
+                return_stall.putExtra("class","foodreview");
+                return_stall.putExtra("courtposition",intent.getStringExtra("courtposition"));
+                startActivity(return_stall);
+            }
+        });
+    }
+
+    public void setLayoutText(String name,String des){
         //set TV variable to TV in layout
-        name = findViewById(R.id.tv_StallName);
-        des = findViewById(R.id.tv_StallDes);
+        this.name = findViewById(R.id.tv_StallName);
+        this.des = findViewById(R.id.tv_StallDes);
+        this.name.setText(name);
+        this.des.setText(des);
+    }
 
+    public void setAdapter(int position, ArrayList<Review> rlist , ArrayList<Review> tlist){
         //hardcode data
         Review f1 = new Review(0,0,0,"Awesome","10");
         Review f2 = new Review(1,0,1 ,"Sedap","5");
         Review f3 = new Review(2,1,2,"Best","9");
         Review f4 = new Review(3,2,3,"Some Delicious Chicken","10");
         //add into list
-        review_List.add(f1);
-        review_List.add(f2);
-        review_List.add(f3);
-        review_List.add(f4);
+        rlist.add(f1);
+        rlist.add(f2);
+        rlist.add(f3);
+        rlist.add(f4);
 
-        //Set the right text for TV in layout
-        name.setText(stall_name);
-        des.setText(stall_des);
 
         //get the right reviews for the rv
-        for (Review r : review_List) {
+        for (Review r : rlist) {
             if(r.getStallID() == position){
-                temp_List.add(r);
+                tlist.add(r);
             }
         }
 
@@ -68,20 +106,25 @@ public class FoodStallReview extends AppCompatActivity {
         FoodstallReviews.setLayoutManager(layoutManager);
 
         //set Adapter + add data into recycler view
-        FoodStallReviewAdapter fadapter = new FoodStallReviewAdapter(FoodStallReview.this,temp_List);
+        FoodStallReviewAdapter fadapter = new FoodStallReviewAdapter(FoodStallReview.this,tlist);
         FoodstallReviews.setAdapter(fadapter);
+    }
 
+    public void PostReview(final int i, final String n, final String d, final String cp){
         //set button to bring to add review activity
-        Button post_review_btn = findViewById(R.id.btn_PostReview);
+        final Button post_review_btn = findViewById(R.id.btn_PostReview);
         post_review_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent postreview = new Intent(FoodStallReview.this,Main3Activity.class);
-                startActivity(postreview);
+                Intent post_review = new Intent(FoodStallReview.this, PostReview.class);
+                post_review.putExtra("reviewid",Integer.toString(temp_List.size()));
+                post_review.putExtra("courtposition",cp);
+                post_review.putExtra("position",Integer.toString(i));
+                post_review.putExtra("name",n);
+                post_review.putExtra("des",d);
+                startActivity(post_review);
             }
         });
-
-
 
     }
 

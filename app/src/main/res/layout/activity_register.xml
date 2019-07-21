@@ -10,7 +10,7 @@
         android:id="@+id/button_Create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:onClick="onCreateClick"
         android:text="Create"
         app:layout_constraintEnd_toEndOf="@+id/editText_PasswordCreate"
@@ -19,24 +19,22 @@
 
     <EditText
         android:id="@+id/editText_PasswordCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/passwordText"
         app:layout_constraintStart_toStartOf="@+id/passwordText"
         app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
     <EditText
         android:id="@+id/editText_UserNameCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="@+id/usernameText"
         app:layout_constraintStart_toStartOf="@+id/usernameText"
         app:layout_constraintTop_toBottomOf="@+id/usernameText" />
@@ -62,7 +60,6 @@
         android:text="Password"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/editText_UserNameCreate"
-        app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="@+id/editText_UserNameCreate"
         app:layout_constraintTop_toBottomOf="@+id/editText_UserNameCreate" />
 </android.support.constraint.ConstraintLayout>

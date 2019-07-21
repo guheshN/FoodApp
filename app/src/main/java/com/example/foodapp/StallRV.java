@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,28 @@ public class StallRV extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stall_rv);
 
+        //get data to list
+        CodeData(stall_List);
+
+
+        //get the right stalls for the right food court
+        int court_position = GetStalls(stall_List,temp_List);
+
+        //set RV
+        SetRecyclerView(temp_List,court_position);
+
+        //set Return button
+        Button return_page = findViewById(R.id.btn_return_page);
+        return_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent return_intent = new Intent(StallRV.this,CourtRV.class);
+                startActivity(return_intent);
+            }
+        });
+    }
+
+    public void CodeData(ArrayList<Stalls> slist){
         //hardcode stall data(FC only)
         Stalls s1 = new Stalls(0,0,"Fried Master Chicken","chickies",0.0);
         Stalls s2 = new Stalls(1,0,"Malay Stall","Nasi Lemak",0.0);
@@ -30,17 +54,23 @@ public class StallRV extends AppCompatActivity {
         stall_List.add(s4);
         stall_List.add(s5);
         stall_List.add(s6);
+    }
 
+    public int GetStalls(ArrayList<Stalls> slist, ArrayList<Stalls> tlist){
         //Pass the position to this activity
         Intent intent = getIntent();
-        int position = Integer.parseInt(intent.getStringExtra("position"));
+        int position = Integer.parseInt(intent.getStringExtra("courtposition"));
 
         //get the right stalls for the right food court
-        for (Stalls s : stall_List) {
+        for (Stalls s : slist) {
             if(s.getCourtID() == position){
-                temp_List.add(s);
+                    tlist.add(s);
             }
         }
+        return position;
+    }
+
+    public void SetRecyclerView(ArrayList<Stalls> tlist, final int cposition){
         //find recyclerview in layout
         RecyclerView stallView = findViewById(R.id.view_Stall);
 
@@ -52,14 +82,14 @@ public class StallRV extends AppCompatActivity {
         stallView.setLayoutManager(layoutManager);
 
         //set condition for food court that does not have information
-        if(temp_List.size() == 0){
+        if(tlist.size() == 0){
             //Bring them to error page
             Intent error = new Intent(StallRV.this,SorryNotAvailablePage.class);
             startActivity(error);
         }
         else{
             //set Adapter + add data into recycler view
-            StallAdapter sadapter = new StallAdapter(StallRV.this,temp_List);
+            StallAdapter sadapter = new StallAdapter(StallRV.this,tlist);
             stallView.setAdapter(sadapter);
             //when rv is clicked
             sadapter.setOnClickListener(new StallAdapter.OnItemClickListener() {
@@ -73,14 +103,14 @@ public class StallRV extends AppCompatActivity {
                     String stall_Des = selected_Stall.getStallDes();
                     String pos = "" + position;
                     //bring info to intent
+                    review_Intent.putExtra("courtposition",Integer.toString(cposition));
                     review_Intent.putExtra("position",pos);
                     review_Intent.putExtra("name",stall_Name);
                     review_Intent.putExtra("des",stall_Des);
+                    review_Intent.putExtra("class","stall");
                     startActivity(review_Intent);
                 }
             });
         }
-
-
     }
 }

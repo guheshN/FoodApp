@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
+import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 
 public class CourtRV extends AppCompatActivity{
@@ -15,6 +18,27 @@ public class CourtRV extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_rv);
+        //get data method
+        CodeData(court_List);
+        //add to RV method
+        courtRV(court_List);
+
+        //set logout button
+        Button logout = findViewById(R.id.btn_LogoOut);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Bring back to login page
+                Intent logout = new Intent(CourtRV.this,LoginActivity.class);
+                logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(logout);
+                finish();
+            }
+        });
+
+    }
+
+    public void CodeData(ArrayList<Court> clist){
         //hardcode court data
         Court c1 = new Court(R.drawable.fc,"FoodClub");
         Court c2 = new Court(R.drawable.munch,"Munch");
@@ -25,7 +49,9 @@ public class CourtRV extends AppCompatActivity{
         court_List.add(c2);
         court_List.add(c3);
         court_List.add(c4);
+    }
 
+    public void courtRV(ArrayList<Court> clist){
         //find recyclerview in layout
         RecyclerView courtstallView = findViewById(R.id.view_Stall);
 
@@ -46,11 +72,13 @@ public class CourtRV extends AppCompatActivity{
             public void onItemClick(int position) {
                 Intent intent = new Intent(CourtRV.this,StallRV.class);
                 String pos = "" + position;
-                intent.putExtra("position",pos);
+                intent.putExtra("courtposition",pos);
+                intent.putExtra("class","courtrv");
                 startActivity(intent);
             }
         });
-
     }
+
+
 
 }

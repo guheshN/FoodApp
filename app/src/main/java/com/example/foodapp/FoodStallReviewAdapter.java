@@ -59,7 +59,7 @@ public class FoodStallReviewAdapter extends RecyclerView.Adapter<FoodStallReview
         public ReviewViewHolder( View itemView) {
             super(itemView);
             userID= itemView.findViewById(R.id.tv_Name);
-            stallReview = itemView.findViewById(R.id.tv_Review);
+            stallReview = itemView.findViewById(R.id.tv_MyReview);
             stallScore = itemView.findViewById(R.id.tv_Score);
         }
     }

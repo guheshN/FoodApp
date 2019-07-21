@@ -1,6 +1,8 @@
 package com.example.foodapp;
 
-public class Review {
+import java.io.Serializable;
+
+public class Review implements Serializable {
     private int reviewID;
     private int stallID;
     private int userID;

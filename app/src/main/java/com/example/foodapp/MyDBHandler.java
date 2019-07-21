@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 public class MyDBHandler extends SQLiteOpenHelper {
@@ -16,29 +17,29 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     //Variables for User table
     public static  final String USER= "User";
-    public static  final String COLUMN_USERID ="UserID";
+    public static  final String COLUMN_USER_ID ="UserID";
     public static  final String COLUMN_USERNAME="UserName";
     public static  final String COLUMN_PASSWORD="Password";
 
     //Variables for FoodCourt table
     public static  final String FOODCOURT="FoodCourt";
-    public static  final String COLUMN_COURTID="CourtID";
-    public static  final String COLUMN_COURTNAME="CourtName";
-    public static  final String COLUMN_COURTPICTURE="CourtPicture";
+    public static  final String COLUMN_COURT_ID="CourtID";
+    public static  final String COLUMN_COURT_NAME="CourtName";
+    public static  final String COLUMN_COURT_PICTURE="CourtPicture";
 
     //Variables for FoodStall table
     public static  final String FOODSTALL="FoodStall";
-    public static  final String COLUMN_STALLID="StallID";
-    public static  final String COLUMN_STALLNAME="StallName";
-    public static  final String COLUMN_STALLDESCRIPTION="StallDescription";
-    public static  final String COLUMN_STALLSCORE="StallScore";
-    public static  final String COLUMN_STALLPICTURE="StallPicture";
+    public static  final String COLUMN_STALL_ID="StallID";
+    public static  final String COLUMN_STALL_NAME="StallName";
+    public static  final String COLUMN_STALL_DESCRIPTION="StallDescription";
+    public static  final String COLUMN_STALL_SCORE="StallScore";
+    public static  final String COLUMN_STALL_PICTURE="StallPicture";
 
     //Variables for Review table
     public static  final String REVIEW="Review";
-    public static  final String COLUMN_REVIEWID="ReviewID";
-    public static  final String COLUMN_REVIEWSCORE="ReviewScore";
-    public static  final String COLUMN_REVIEWDESCRIPTION="ReviewDescription";
+    public static  final String COLUMN_REVIEW_ID="ReviewID";
+    public static  final String COLUMN_REVIEW_SCORE="ReviewScore";
+    public static  final String COLUMN_REVIEW_DESCRIPTION="ReviewDescription";
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context,DATABASE_NAME,factory,DATABASE_VERSION);
     }
@@ -46,16 +47,16 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         //create user table
-        String CREATE_USER_TABLE= "create table " + USER +"(" + COLUMN_USERID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USERNAME +"TEXT," + COLUMN_PASSWORD +"TEXT" +")";
+        String CREATE_USER_TABLE= "create table " + USER +"(" + COLUMN_USER_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USERNAME +"\t TEXT," + COLUMN_PASSWORD +"\t TEXT" +")";
         db.execSQL(CREATE_USER_TABLE);
         //create food court table
-        String CREATE_FOODCOURT_TABLE = "create table " + FOODCOURT +"(" + COLUMN_COURTID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_COURTNAME +"TEXT," + COLUMN_COURTPICTURE +"LARGEBLOB" +")";
+        String CREATE_FOODCOURT_TABLE = "create table " + FOODCOURT +"(" + COLUMN_COURT_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_COURT_NAME +"\t TEXT," + COLUMN_COURT_PICTURE +"\t INT" +")";
         db.execSQL(CREATE_FOODCOURT_TABLE);
         //create food stall table
-        String CREATE_FOODSTALL_TABLE = "create table " + FOODSTALL +"(" + COLUMN_STALLID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_STALLNAME +"TEXT," + COLUMN_STALLPICTURE +"LARGEBLOB," + COLUMN_STALLSCORE + "FLOAT," + COLUMN_STALLDESCRIPTION + "TEXT" + ")";
+        String CREATE_FOODSTALL_TABLE = "create table " + FOODSTALL +"(" + COLUMN_STALL_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_STALL_NAME +"\t TEXT," + COLUMN_STALL_PICTURE +"\t INT," + COLUMN_STALL_SCORE + "\t FLOAT," + COLUMN_STALL_DESCRIPTION + "\t TEXT" + ")";
         db.execSQL(CREATE_FOODSTALL_TABLE);
         //create review table
-        String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEWID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEWDESCRIPTION +"TEXT," + COLUMN_REVIEWSCORE +"FLOAT" +")";
+        String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT" +")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
     }
@@ -78,28 +79,30 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+
     public UserData findUser(String username)
     {
         String query= "SELECT * FROM "+ USER+ " WHERE "+COLUMN_USERNAME + "= \""+ username +"\"";
-        SQLiteDatabase db=this.getWritableDatabase();
+        SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
 
         UserData queryData= new UserData();
-        if (cursor.moveToFirst()){
-            queryData.setMyUserName(cursor.getString(0));
-            queryData.setMyPassword(cursor.getString(1));
+        if (cursor.moveToNext()){
+            queryData.setUserID(cursor.getInt(0));
+            queryData.setMyUserName(cursor.getString(1));
+            queryData.setMyPassword(cursor.getString(2));
             cursor.close();
         }
 
         else{
-            queryData=null;
+            queryData = null;
         }
         db.close();
         return  queryData;
     }
 
 
-    public boolean deleteAccount(String username)
+    /*public boolean deleteAccount(String username)
     {
         boolean result = false;
         String query = "SELECT * FROM "+USER+" WHERE "+COLUMN_USERNAME+"=\""+username+"\"";
@@ -117,7 +120,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
         db.close();
         return result;
-    }
+    }*/
 
 
 

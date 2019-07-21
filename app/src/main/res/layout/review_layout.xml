@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_Review"
+        android:id="@+id/tv_MyReview"
         android:layout_width="177dp"
         android:layout_height="57dp"
         android:layout_alignParentStart="true"
