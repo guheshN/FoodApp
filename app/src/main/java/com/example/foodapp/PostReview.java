@@ -20,7 +20,7 @@ public class PostReview extends AppCompatActivity {
         setContentView(R.layout.activity_post_review);
         //get ID from previous activity
         Intent review = getIntent();
-        final int review_ID = Integer.parseInt(review.getStringExtra("reviewid"));
+        final String userid = review.getStringExtra("userid");
         final String court_position = review.getStringExtra("courtposition");
         final String stall_name = review.getStringExtra("name");
         final String stall_des = review.getStringExtra("des");
@@ -45,6 +45,7 @@ public class PostReview extends AppCompatActivity {
                 //Bundle bundle = new Bundle();
                 //bundle.putSerializable(serial_key,review1);
                 //review_page.putExtras(bundle);
+                review_page.putExtra("userid",userid);
                 review_page.putExtra("review",reviewTxt);
                 review_page.putExtra("score",scoreTxt);
                 review_page.putExtra("class","postreview");
