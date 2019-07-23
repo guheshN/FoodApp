@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.np.foodapp;
 
 import android.support.v7.app.AppCompatActivity;
 

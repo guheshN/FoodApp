@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.np.foodapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

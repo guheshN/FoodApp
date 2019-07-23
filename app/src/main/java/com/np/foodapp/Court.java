@@ -1,4 +1,4 @@
-package com.example.foodapp;
+package com.np.foodapp;
 
 public class Court {
     //set private properties
