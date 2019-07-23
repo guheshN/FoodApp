@@ -7,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-
-import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 
 public class CourtRV extends AppCompatActivity{
@@ -45,10 +43,10 @@ public class CourtRV extends AppCompatActivity{
 
     public void CodeData(ArrayList<Court> clist ){
         //hardcode court data
-        Court c1 = new Court(R.drawable.fc,"FoodClub");
+        Court c1 = new Court(R.drawable.poolside,"PoolSide");
         Court c2 = new Court(R.drawable.munch,"Munch");
         Court c3 = new Court(R.drawable.makanplace,"MakanPlace");
-        Court c4 = new Court(R.drawable.poolside,"PoolSide");
+        Court c4 = new Court(R.drawable.fc,"FoodClub");
         //add into court list
         court_List.add(c1);
         court_List.add(c2);
