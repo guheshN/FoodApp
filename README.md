@@ -2,13 +2,13 @@
 
 Raymond Neo Soon Aik S10185503D
 
-Guhesh
+Guhesh Nalachandiran S10187977C
 
 Aniq
 
 NP Foodie
 
-Our team has to decide to create an application that enable anyone to leave a review on our canteen in Ngee Ann Polytechnic. By doing this students or outsiders are able to know what are the hottest and famous food stalls in NP.
+Our team has to decide to create an application that enable anyone to leave a review on ofr canteens in Ngee Ann Polytechnic. By doing this students or outsiders are able to know what are the hottest and famous food stalls in NP.
 
 ![page 4](https://user-images.githubusercontent.com/52902576/62009598-b1095b00-b193-11e9-9b63-eb8fdad28f36.PNG)
 This will be the first page that will be displayed when the user first launch the application.
@@ -125,4 +125,8 @@ After the user have enter what they want to , they can press the post review but
 
 ![stall review pic 2](https://user-images.githubusercontent.com/52902576/62009663-63d9b900-b194-11e9-838d-d3d641e7f6e0.PNG)
 After Posting the review, the app will bring the user back to the details page. The details page will then have a newly added review onto the review list displayed on the screen. The user can choose to return the app or post another review .
+
+
+Guhesh:Added Login and Register activities.Also added Validation and added Database tables.In addition, I created the EditPassword and insertStall functions.I also contributed in the storyboarding of our application.
+
 
