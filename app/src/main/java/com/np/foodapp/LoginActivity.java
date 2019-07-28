@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     public static final String Userid = "userid";
     public static final String Courtposition = "courtposition";
     public static final String Stallposition = "stallposition";
+    public static final String Username = "username";
+    public static final String Password = "password";
 
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
 
@@ -67,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
             SharedPreferences.Editor editor = sharedPreferences.edit();
             UserData userData = dbHandler.findUser(user);
             editor.putInt(Userid,userData.getUserID());
+            editor.putString(Username,userData.getMyUserName());
+            editor.putString(Password,userData.getMyPassword());
             editor.apply();
             Intent intent= new Intent(LoginActivity.this, MenuPage.class);
             Toast.makeText(this, "Valid User", Toast.LENGTH_LONG).show();
