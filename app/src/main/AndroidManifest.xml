@@ -11,20 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.np.foodapp.StartingScreen">
+        <activity android:name=".Setting"></activity>
+        <activity android:name=".MenuPage" />
+        <activity android:name=".StartingScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.np.foodapp.FoodStallReview" />
-        <activity android:name="com.np.foodapp.SorryNotAvailablePage" />
-        <activity android:name="com.np.foodapp.StallRV" />
-        <activity android:name="com.np.foodapp.CourtRV" />
-        <activity android:name="com.np.foodapp.PostReview" />
-        <activity android:name="com.np.foodapp.RegisterActivity" />
-        <activity android:name="com.np.foodapp.LoginActivity"/>
+        <activity android:name=".FoodStallReview" />
+        <activity android:name=".SorryNotAvailablePage" />
+        <activity android:name=".StallRV" />
+        <activity android:name=".CourtRV" />
+        <activity android:name=".PostReview" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
             UserData userData = dbHandler.findUser(user);
             editor.putInt(Userid,userData.getUserID());
             editor.apply();
-            Intent intent= new Intent(LoginActivity.this, CourtRV.class);
+            Intent intent= new Intent(LoginActivity.this, MenuPage.class);
             Toast.makeText(this, "Valid User", Toast.LENGTH_LONG).show();
             startActivity(intent);
 
