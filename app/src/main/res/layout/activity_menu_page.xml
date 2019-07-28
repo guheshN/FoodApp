@@ -4,41 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF233"
     tools:context=".MenuPage">
 
     <Button
         android:id="@+id/btnReview"
-        android:layout_width="139dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="163dp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="92dp"
+        android:background="#FFFFFF"
         android:text="Review"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSetting"
-        android:layout_width="139dp"
-        android:layout_height="76dp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="163dp"
+        android:background="#FFFFFF"
         android:text="Setting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnReview" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="139dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
         android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSetting" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSetting"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     public static final String Userid = "userid";
     public static final String Courtposition = "courtposition";
     public static final String Stallposition = "stallposition";
+    public static final String Username= "username";
+    public static final String Password="password";
 
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
 

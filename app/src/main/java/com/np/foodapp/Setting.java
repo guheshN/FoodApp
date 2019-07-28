@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 public class Setting extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity.java";
-    private TextView tv_NewUser;
     SharedPreferences sharedPreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Userid = "userid";
@@ -51,6 +50,7 @@ public class Setting extends AppCompatActivity {
                    dbHandler.editUser(sUser ,sPassword);
                    Toast.makeText(getApplicationContext(),"Successfully Update",Toast.LENGTH_SHORT).show();
                    Intent intent= new Intent(Setting.this, MenuPage.class);
+                   startActivity(intent);
 
 
                }
