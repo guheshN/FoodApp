@@ -127,6 +127,70 @@ After the user have enter what they want to , they can press the post review but
 After Posting the review, the app will bring the user back to the details page. The details page will then have a newly added review onto the review list displayed on the screen. The user can choose to return the app or post another review .
 
 
-Guhesh:Added Login and Register activities.Also added Validation and added Database tables.In addition, I created the EditPassword and insertStall functions.I also contributed in the storyboarding of our application.
+Guhesh:
+
+Added Login Function for user to access by comparing with username and password 
+
+Register activities for new user to add their account to the database.
+
+Layout of the Login and Register
+
+Added Validation: check user and pass by using regular expression, check corret valid username and password during login from database
+apply error message if incorrect
+
+Helped with the creation of DataBase tables, added user, foodourt,food stall,Review tables
+
+Created the Finduser , Adduser , EditPassword and insertStall functions in database
+
+Created the UserData Class
+
+I also contributed in the storyboarding of our application: Contribute to the flow of the app and the looks
+
+Raymond: 
+
+Implement SharedPrefernces in the whole App
+
+Implement Court activity that list the court using a recycle view
+
+implement a clickable view to bring to the stall list page
+
+Implement the Stall activity that list the stall of the selected court to recycler view , implement return button to foodcourt page
+
+implement a clickable view to bring to the details page
+
+Implement the FoodStallReview page : Allow the User to see the details of the stall and post review button
+
+Implement the PostReviewPage: Allow user to Enter a score and Review to post it to database
+
+Implement validation: Only allow score to be 1-10 
+
+Helped with creation of DataBase Table: user,foodcourt,foodstall,review
+
+Helped with creation of insert statement: Foodcourt data
+
+Created getcourt , getstall , getstalldetail , add review and getreview in databasehandler 
+
+Created Class: Stalls, Court, Review
+
+Layout: courtlayout, stall layout, reviewlayout (recycler view) courtrv , stallrv , foodstallreview, post review(activty)
+
+Aniq:
+
+Implemented the MainMenu page to go to court page , settings and logout
+
+Implemented the Settings Page : Get new username and Password from user and update them into the database
+
+Validation used: Regular expression to ensure that password and username has the requirement needed, Ensure it is not the same as the current username and password. 
+
+Implemented The recycler view for the foodstallreview activity
+
+Helped with the insert statement in database: for the foodcourt and foodstalls
+
+Layout for the foodstallreview , main menu and settings
+
+storyboarding of our application: Contribute to the flow of the app and the looks
+
+
+
 
 
