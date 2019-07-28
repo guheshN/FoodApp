@@ -18,6 +18,9 @@ public class Stalls {
         stallScore = s;
 
     }
+    public Stalls(){
+
+    }
     //set public properties
     public void setStallID(int id){ stallID = id; }
     public int getStallID(){ return stallID; }

@@ -25,4 +25,6 @@ public class Court {
         cimage = image;
         cname = name ;
     }
+    public Court(){
+    }
 }

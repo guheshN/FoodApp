@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     private static final String TAG = "LoginActivity.java";
     private TextView tv_NewUser;
 
-    MyDBHandler dbHandler = new MyDBHandler(this,null,null,1);
+    MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
 
 
     @SuppressLint("ClickableViewAccessibility")

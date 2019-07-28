@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String MY_USERNAME ="MyUserName";
     public static final String MY_PASSWORD ="MyPassword";
 
-    MyDBHandler dbHandler= new MyDBHandler(this,null,null,1);
+    MyDBHandler dbHandler= new MyDBHandler(this,null,null,2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

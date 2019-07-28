@@ -8,6 +8,10 @@ public class Review implements Serializable {
     private int userID;
     private String stallReview;
     private String stallScore;
+    private int likes;
+
+    public void setLikes(int like){likes = like;}
+    public int getLikes(){return likes;}
 
     public void setReviewID(int rID){reviewID = rID;}
     public int getReviewID(){return reviewID;}
@@ -33,11 +37,16 @@ public class Review implements Serializable {
     }
 
 
-    public Review(int rid, int sid, int uid, String r, String s){
+    public Review(int rid, int sid, int uid, String r, String s , int l){
         reviewID = rid;
         stallID = sid;
         userID = uid;
         stallReview = r;
         stallScore = s;
+        likes = l;
+    }
+
+    public Review(){
+
     }
 }

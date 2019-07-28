@@ -10,7 +10,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class CourtRV extends AppCompatActivity{
-    ArrayList<Court> court_List = new ArrayList<>();
+    MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,9 @@ public class CourtRV extends AppCompatActivity{
         Intent intent = getIntent();
         String userid = intent.getStringExtra("userid");
 
-        //get data method
-        CodeData(court_List);
+        //get data
+        ArrayList<Court> court_List = dbHandler.getCourt();
+
         //add to RV method
         courtRV(court_List, userid);
 
@@ -41,19 +42,6 @@ public class CourtRV extends AppCompatActivity{
 
     }
 
-    public void CodeData(ArrayList<Court> clist ){
-        //hardcode court data
-        Court c1 = new Court(R.drawable.poolside,"PoolSide");
-        Court c2 = new Court(R.drawable.munch,"Munch");
-        Court c3 = new Court(R.drawable.makanplace,"MakanPlace");
-        Court c4 = new Court(R.drawable.fc,"FoodClub");
-        //add into court list
-        court_List.add(c1);
-        court_List.add(c2);
-        court_List.add(c3);
-        court_List.add(c4);
-    }
-
     public void courtRV(ArrayList<Court> clist, final String uid){
         //find recyclerview in layout
         RecyclerView courtstallView = findViewById(R.id.view_Stall);
@@ -66,7 +54,7 @@ public class CourtRV extends AppCompatActivity{
         courtstallView.setLayoutManager(layoutManager);
 
         //set Adapter + add data into recycler view
-        CourtAdapter cadapter = new CourtAdapter(CourtRV.this,court_List);
+        CourtAdapter cadapter = new CourtAdapter(CourtRV.this,clist);
         courtstallView.setAdapter(cadapter);
 
         //When rv is clicked
