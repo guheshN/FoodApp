@@ -33,14 +33,13 @@ public class CourtRV extends AppCompatActivity{
 
 
         //set logout button
-        Button logout = findViewById(R.id.btn_LogoOut);
-        logout.setOnClickListener(new View.OnClickListener() {
+        Button return_btn = findViewById(R.id.btn_LogoOut);
+        return_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Bring back to login page
-                Intent logout = new Intent(CourtRV.this,LoginActivity.class);
-                logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(logout);
+                Intent return_intent = new Intent(CourtRV.this,MenuPage.class);
+                startActivity(return_intent);
                 finish();
             }
         });
