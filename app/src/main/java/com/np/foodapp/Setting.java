@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 public class Setting extends AppCompatActivity {
 
+    public static final String MyPREFERENCES ="MyPrefs";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

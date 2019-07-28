@@ -23,7 +23,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     public static final String Courtposition = "courtposition";
     public static final String Stallposition = "stallposition";
 
+
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
+
+
 
 
     @SuppressLint("ClickableViewAccessibility")
