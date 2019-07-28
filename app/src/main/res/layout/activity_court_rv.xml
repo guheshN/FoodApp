@@ -11,28 +11,26 @@
         android:id="@+id/view_Stall"
         android:layout_width="421dp"
         android:layout_height="496dp"
-        android:scrollbars="vertical"
         android:background="#FFFFFF"
+        android:scrollbars="vertical"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintVertical_bias="0.364" />
 
     <Button
         android:id="@+id/btn_LogoOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="6dp"
         android:background="#FFFFFF"
-        android:text="Logout"
-        app:layout_constraintBottom_toTopOf="@+id/view_Stall"
+        android:text="return"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/view_Stall" />
 </android.support.constraint.ConstraintLayout>

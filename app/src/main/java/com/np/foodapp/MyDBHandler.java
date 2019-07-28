@@ -62,17 +62,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String CREATE_REVIEW_TABLE = "create table " + REVIEW +"(" + COLUMN_REVIEW_ID + "\t INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_STALL_ID + "\t INTEGER," +COLUMN_USER_ID + "\t INTEGER," + COLUMN_REVIEW_DESCRIPTION +"\t TEXT," + COLUMN_REVIEW_SCORE +"\t FLOAT," + COLUMN_REVIEW_LIKE + "\t INTEGER" + ")";
         db.execSQL(CREATE_REVIEW_TABLE);
 
-        /*insertCourt("Poolside",R.drawable.poolside);
-        insertCourt("FoodClub",R.drawable.fc);
-        insertCourt("MakanPlace",R.drawable.makanplace);
-        insertCourt("Munch",R.drawable.munch);
-
-        insertStall(0,"Fried Chicken Master","Crispy Tender Chicken and more",0);
-        insertStall(0,"Malay Store","Nasi Lemak, Mee Soto And more",0);
-        insertStall(0,"Waffles and Ice Cream","Crunchy and Fresh Waffles available",0);
-        insertStall(0,"Canopy Coffee Club","Drinks and BreakFast provided",0);
-        insertStall(0,"Henry's Western Stall","Great Western Food here at Henry's" ,0);
-        insertStall(0,"MiniWok","All Your Favourite Stir-Fried Dishes Available",0);*/
 
 
         db.execSQL("INSERT INTO FOODCOURT (" + COLUMN_COURT_NAME+ "," + COLUMN_COURT_PICTURE + ")" + "\tVALUES" + "(" + "\"" + "PoolSide" + "\""+ "," + R.drawable.poolside + ")");
@@ -273,26 +262,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
 
 
-
-    /*public boolean deleteAccount(String username)
-    {
-        boolean result = false;
-        String query = "SELECT * FROM "+USER+" WHERE "+COLUMN_USERNAME+"=\""+username+"\"";
-        SQLiteDatabase db= this.getWritableDatabase();
-        Cursor cursor= db.rawQuery(query,null);
-
-        UserData delData= new UserData();
-
-        if(cursor.moveToFirst())
-        {
-            delData.setMyUserName(cursor.getString(0));
-            db.delete(USER, COLUMN_USERNAME+"=?", new String[]{String.valueOf((delData.getMyUserName()))});
-            cursor.close();
-            result= true;
-        }
-        db.close();
-        return result;
-    }*/
 
 
 
