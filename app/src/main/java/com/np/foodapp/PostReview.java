@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PostReview extends AppCompatActivity {
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
@@ -19,12 +23,9 @@ public class PostReview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_review);
-        //get ID from previous activity
         Intent review = getIntent();
-        //final int userid = Integer.parseInt(review.getStringExtra("userid"));
-        //final int position = Integer.parseInt(review.getStringExtra("position"));
-        //final String cposition = review.getStringExtra("courtposition");
 
+        // Get required information from sharedpreference
         SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         final int position = prefs.getInt(Stallposition,0);
         final int userid = prefs.getInt(Userid,0);
@@ -38,26 +39,41 @@ public class PostReview extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Pattern patternscore;
+                Matcher matchscore;
                 String scoreTxt = et_Score.getText().toString();
                 String reviewTxt = et_Review.getText().toString();
+                final String SCORE_PATTERN = "^[0-9]{1,2}$";
 
-                Review review1 = new Review(0,(position+1),userid,reviewTxt,scoreTxt,0);
-                dbHandler.addReview(review1);
+                patternscore= Pattern.compile(SCORE_PATTERN);
+                matchscore= patternscore.matcher(scoreTxt);
 
-                Intent review_page = new Intent(PostReview.this,FoodStallReview.class);
-               // review_page.putExtra("userid",Integer.toString(userid));
-                review_page.putExtra("class","postreview");
-                //review_page.putExtra("position",Integer.toString(position));
-                //review_page.putExtra("courtposition",cposition);
-                startActivity(review_page);
+                if(matchscore.matches()){
+                    if(tryParse(scoreTxt,-1) <= -1 || tryParse(scoreTxt,-1) >= 11){
+                        Toast.makeText(getApplicationContext(),"Please enter a score of 0-10",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Review review1 = new Review(0,(position+1),userid,reviewTxt,scoreTxt,0);
+                        dbHandler.addReview(review1);
 
-
+                        Intent review_page = new Intent(PostReview.this,FoodStallReview.class);
+                        review_page.putExtra("class","postreview");
+                        startActivity(review_page);
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Please enter a score of 0-10",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
+    }
 
-
-
-
+    public int tryParse(String value, int defaultVal) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return defaultVal;
+        }
     }
 }

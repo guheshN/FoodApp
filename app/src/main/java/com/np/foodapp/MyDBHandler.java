@@ -225,8 +225,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_STALL_ID,review.getStallID());
         values.put(COLUMN_USER_ID,review.getUserID());
         values.put(COLUMN_REVIEW_DESCRIPTION,review.getStallReview());
-        values.put(COLUMN_REVIEW_SCORE,review.getStallReview());
-        values.put(COLUMN_REVIEW_LIKE,review.getStallReview());
+        values.put(COLUMN_REVIEW_SCORE,review.getStallScore());
+       // values.put(COLUMN_REVIEW_LIKE,review.getStallLikes());
 
         SQLiteDatabase db= this.getWritableDatabase();
         Log.v(TAG,values.toString());
@@ -244,9 +244,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
             Review querydata = new Review();
             querydata.setReviewID(cursor.getInt(0));
             querydata.setStallID(cursor.getInt(1));
-            querydata.setStallReview(cursor.getString(2));
-            querydata.setStallScore(cursor.getString(3));
-            querydata.setLikes(cursor.getInt(4));
+            querydata.setUserID(cursor.getInt(2));
+            querydata.setStallReview(cursor.getString(3));
+            querydata.setStallScore(cursor.getString(4));
+            querydata.setLikes(cursor.getInt(5));
 
             reviewdata.add(querydata);
         }

@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF233"
     tools:context=".CourtRV">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/view_Stall"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:padding="4dp"
+        android:layout_width="421dp"
+        android:layout_height="496dp"
         android:scrollbars="vertical"
+        android:background="#FFFFFF"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.496" />
 
     <Button
         android:id="@+id/btn_LogoOut"
@@ -25,10 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
+        android:background="#FFFFFF"
         android:text="Logout"
         app:layout_constraintBottom_toTopOf="@+id/view_Stall"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

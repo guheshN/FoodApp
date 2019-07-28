@@ -72,8 +72,6 @@ public class CourtRV extends AppCompatActivity{
                 editor.putInt(Courtposition,position);
                 editor.apply();
 
-               // String pos = "" + position;
-                //intent.putExtra("courtposition",pos);
                 intent.putExtra("class","courtrv");
                 startActivity(intent);
             }

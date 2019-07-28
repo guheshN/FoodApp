@@ -30,9 +30,6 @@ public class FoodStallReview extends AppCompatActivity {
         Log.d(TAG,"onCreate: started.");
         // get information from intent
         final Intent intent = getIntent();
-        //final String userid = intent.getStringExtra("userid");
-        //final int position = Integer.parseInt(intent.getStringExtra("position"));
-        //final String cposition = intent.getStringExtra("courtposition");
 
         SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         int position = prefs.getInt(Stallposition,0);
@@ -63,8 +60,6 @@ public class FoodStallReview extends AppCompatActivity {
             public void onClick(View v ) {
                 Intent return_stall = new Intent(FoodStallReview.this,StallRV.class);
                 return_stall.putExtra("class","foodreview");
-                //return_stall.putExtra("courtposition", cposition);
-                //return_stall.putExtra("userid", userid);
                 startActivity(return_stall);
             }
         });
@@ -109,10 +104,6 @@ public class FoodStallReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent post_review = new Intent(FoodStallReview.this, PostReview.class);
-                //pass information to next intent
-                //post_review.putExtra("userid",uid);
-               // post_review.putExtra("courtposition",cpos);
-                //post_review.putExtra("position",Integer.toString(pos));
                 startActivity(post_review);
             }
         });
