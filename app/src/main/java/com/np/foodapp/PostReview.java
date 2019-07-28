@@ -1,6 +1,7 @@
 package com.np.foodapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.EditText;
 
 public class PostReview extends AppCompatActivity {
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Userid = "userid";
+    public static final String Courtposition = "courtposition";
+    public static final String Stallposition = "stallposition";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +21,13 @@ public class PostReview extends AppCompatActivity {
         setContentView(R.layout.activity_post_review);
         //get ID from previous activity
         Intent review = getIntent();
-        final int userid = Integer.parseInt(review.getStringExtra("userid"));
-        final int position = Integer.parseInt(review.getStringExtra("position"));
-        final String cposition = review.getStringExtra("courtposition");
+        //final int userid = Integer.parseInt(review.getStringExtra("userid"));
+        //final int position = Integer.parseInt(review.getStringExtra("position"));
+        //final String cposition = review.getStringExtra("courtposition");
+
+        SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        final int position = prefs.getInt(Stallposition,0);
+        final int userid = prefs.getInt(Userid,0);
 
         //call Views in layout to activity
         final EditText et_Score = findViewById(R.id.txt_Score);
@@ -36,10 +45,10 @@ public class PostReview extends AppCompatActivity {
                 dbHandler.addReview(review1);
 
                 Intent review_page = new Intent(PostReview.this,FoodStallReview.class);
-                review_page.putExtra("userid",Integer.toString(userid));
+               // review_page.putExtra("userid",Integer.toString(userid));
                 review_page.putExtra("class","postreview");
-                review_page.putExtra("position",Integer.toString(position));
-                review_page.putExtra("courtposition",cposition);
+                //review_page.putExtra("position",Integer.toString(position));
+                //review_page.putExtra("courtposition",cposition);
                 startActivity(review_page);
 
 

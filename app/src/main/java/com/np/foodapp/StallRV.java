@@ -1,6 +1,7 @@
 package com.np.foodapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,19 +13,28 @@ import java.util.ArrayList;
 
 public class StallRV extends AppCompatActivity {
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
+    SharedPreferences sharedPreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Userid = "userid";
+    public static final String Courtposition = "courtposition";
+    public static final String Stallposition = "stallposition";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stall_rv);
         Intent intent = getIntent();
-        final String userid = intent.getStringExtra("userid");
-        final int position = Integer.parseInt(intent.getStringExtra("courtposition"));
+        //final String userid = intent.getStringExtra("userid");
+        //final int position = Integer.parseInt(intent.getStringExtra("courtposition"));
+
+        SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        int position = prefs.getInt(Courtposition,0);
+
 
         //get the right stalls for the right food court
         ArrayList<Stalls> stall_list = GetStalls(position);
 
         //set RV
-        SetRecyclerView(stall_list,userid,position);
+        SetRecyclerView(stall_list,position);
 
         //set Return button
         Button return_page = findViewById(R.id.btn_return_page);
@@ -32,7 +42,7 @@ public class StallRV extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent return_intent = new Intent(StallRV.this,CourtRV.class);
-                return_intent.putExtra("userid",userid);
+                //return_intent.putExtra("userid",userid);
                 startActivity(return_intent);
             }
         });
@@ -61,7 +71,7 @@ public class StallRV extends AppCompatActivity {
         return slist;
     }
 
-    public void SetRecyclerView(final ArrayList<Stalls> clist, final String uid, final int cposition){
+    public void SetRecyclerView(final ArrayList<Stalls> clist, final int cposition){
         //find recyclerview in layout
         RecyclerView stallView = findViewById(R.id.view_Stall);
 
@@ -88,11 +98,15 @@ public class StallRV extends AppCompatActivity {
                 public void onItemClick(int position) {
                     //Bring to new intent with required information
                     Intent review_Intent = new Intent(StallRV.this, FoodStallReview.class);
-                    String pos = "" + position;
+                    sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt(Stallposition,position);
+                    editor.apply();
+                    //String pos = "" + position;
                     //bring info to intent
-                    review_Intent.putExtra("courtpostion",Integer.toString(cposition));
-                    review_Intent.putExtra("userid",uid);
-                    review_Intent.putExtra("position",pos);
+                    //review_Intent.putExtra("courtpostion",Integer.toString(cposition));
+                    //review_Intent.putExtra("userid",uid);
+                    //review_Intent.putExtra("position",pos);
                     review_Intent.putExtra("class","stall");
                     startActivity(review_Intent);
                 }

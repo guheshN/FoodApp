@@ -1,6 +1,7 @@
 package com.np.foodapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +12,23 @@ import java.util.ArrayList;
 
 public class CourtRV extends AppCompatActivity{
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
+    SharedPreferences sharedPreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Userid = "userid";
+    public static final String Courtposition = "courtposition";
+    public static final String Stallposition = "stallposition";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_court_rv);
         Intent intent = getIntent();
-        String userid = intent.getStringExtra("userid");
 
         //get data
         ArrayList<Court> court_List = dbHandler.getCourt();
 
         //add to RV method
-        courtRV(court_List, userid);
+        courtRV(court_List);
 
 
 
@@ -42,7 +47,7 @@ public class CourtRV extends AppCompatActivity{
 
     }
 
-    public void courtRV(ArrayList<Court> clist, final String uid){
+    public void courtRV(ArrayList<Court> clist){
         //find recyclerview in layout
         RecyclerView courtstallView = findViewById(R.id.view_Stall);
 
@@ -62,9 +67,13 @@ public class CourtRV extends AppCompatActivity{
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(CourtRV.this,StallRV.class);
-                String pos = "" + position;
-                intent.putExtra("userid", uid);
-                intent.putExtra("courtposition",pos);
+                sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(Courtposition,position);
+                editor.apply();
+
+               // String pos = "" + position;
+                //intent.putExtra("courtposition",pos);
                 intent.putExtra("class","courtrv");
                 startActivity(intent);
             }

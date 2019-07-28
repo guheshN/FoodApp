@@ -1,6 +1,7 @@
 package com.np.foodapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,10 @@ public class FoodStallReview extends AppCompatActivity {
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
     TextView name ;
     TextView des;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Userid = "userid";
+    public static final String Courtposition = "courtposition";
+    public static final String Stallposition = "stallposition";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,12 @@ public class FoodStallReview extends AppCompatActivity {
         Log.d(TAG,"onCreate: started.");
         // get information from intent
         final Intent intent = getIntent();
-        final String userid = intent.getStringExtra("userid");
-        final int position = Integer.parseInt(intent.getStringExtra("position"));
-        final String cposition = intent.getStringExtra("courtposition");
+        //final String userid = intent.getStringExtra("userid");
+        //final int position = Integer.parseInt(intent.getStringExtra("position"));
+        //final String cposition = intent.getStringExtra("courtposition");
+
+        SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        int position = prefs.getInt(Stallposition,0);
 
         //get the right stall to display information
         Stalls stall = getStall(position + 1);
@@ -46,7 +54,7 @@ public class FoodStallReview extends AppCompatActivity {
         setAdapter(review_list);
 
         //Button for user to post
-        PostReview(position,cposition,userid);
+        PostReview();
 
         //create return button
         Button return_btn = findViewById(R.id.btn_return);
@@ -55,8 +63,8 @@ public class FoodStallReview extends AppCompatActivity {
             public void onClick(View v ) {
                 Intent return_stall = new Intent(FoodStallReview.this,StallRV.class);
                 return_stall.putExtra("class","foodreview");
-                return_stall.putExtra("courtposition", cposition);
-                return_stall.putExtra("userid", userid);
+                //return_stall.putExtra("courtposition", cposition);
+                //return_stall.putExtra("userid", userid);
                 startActivity(return_stall);
             }
         });
@@ -94,7 +102,7 @@ public class FoodStallReview extends AppCompatActivity {
         FoodstallReviews.setAdapter(fadapter);
     }
 
-    public void PostReview(final int pos,final String cpos,final String uid){
+    public void PostReview(){
         //set button to bring to add review activity
         final Button post_review_btn = findViewById(R.id.btn_PostReview);
         post_review_btn.setOnClickListener(new View.OnClickListener() {
@@ -102,9 +110,9 @@ public class FoodStallReview extends AppCompatActivity {
             public void onClick(View v) {
                 Intent post_review = new Intent(FoodStallReview.this, PostReview.class);
                 //pass information to next intent
-                post_review.putExtra("userid",uid);
-                post_review.putExtra("courtposition",cpos);
-                post_review.putExtra("position",Integer.toString(pos));
+                //post_review.putExtra("userid",uid);
+               // post_review.putExtra("courtposition",cpos);
+                //post_review.putExtra("position",Integer.toString(pos));
                 startActivity(post_review);
             }
         });

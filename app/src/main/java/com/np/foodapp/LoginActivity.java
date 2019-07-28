@@ -2,6 +2,7 @@ package com.np.foodapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
 
     private static final String TAG = "LoginActivity.java";
     private TextView tv_NewUser;
+    SharedPreferences sharedPreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Userid = "userid";
+    public static final String Courtposition = "courtposition";
+    public static final String Stallposition = "stallposition";
 
     MyDBHandler dbHandler = new MyDBHandler(this,null,null,2);
 
@@ -31,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
 
         tv_NewUser = (TextView) findViewById(R.id.textView_Newuser);
         tv_NewUser.setOnTouchListener(this);
+
     }
 
 
@@ -56,9 +63,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
         //if(isValidUsername(etUsername.getText().toString()) && isValidPassword(etPassword.getText().toString()))
         if (isValidUser(user, pass))
         {
+            sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
             UserData userData = dbHandler.findUser(user);
+            editor.putInt(Userid,userData.getUserID());
+            editor.apply();
             Intent intent= new Intent(LoginActivity.this, CourtRV.class);
-            intent.putExtra("userid",Integer.toString(userData.getUserID()));
             Toast.makeText(this, "Valid User", Toast.LENGTH_LONG).show();
             startActivity(intent);
 
