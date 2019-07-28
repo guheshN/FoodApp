@@ -43,6 +43,8 @@ public class MenuPage extends AppCompatActivity {
         setting_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent setting = new Intent(MenuPage.this,Setting.class);
+                startActivity(setting);
 
             }
         });

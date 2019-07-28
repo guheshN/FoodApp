@@ -72,6 +72,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
             SharedPreferences.Editor editor = sharedPreferences.edit();
             UserData userData = dbHandler.findUser(user);
             editor.putInt(Userid,userData.getUserID());
+            editor.putString(Username,userData.getMyUserName());
+            editor.putString(Password,userData.getMyPassword());
             editor.apply();
             Intent intent= new Intent(LoginActivity.this, MenuPage.class);
             Toast.makeText(this, "Valid User", Toast.LENGTH_LONG).show();
