@@ -162,6 +162,19 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return  queryData;
     }
 
+    public void editUser (String username,String password)
+    {
+        String usernamequery= "UPDATE "+ USER+ " SET "+COLUMN_USERNAME + "= \""+ username +"\"";
+        String passwordquery= "UPDATE "+ USER+ " SET "+COLUMN_PASSWORD + "= \""+ password +"\"";
+        SQLiteDatabase db=this.getReadableDatabase();
+        db.execSQL(usernamequery);
+        db.execSQL(passwordquery);
+
+
+
+    }
+
+
     public ArrayList<Court> getCourt()
     {
         String query= "SELECT * FROM " + FOODCOURT ;
@@ -256,6 +269,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
         return  reviewdata;
     }
+
 
 
 

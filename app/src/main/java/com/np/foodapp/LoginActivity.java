@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
 
         Log.v(TAG,"Login with:" + etUsername.getText().toString() + "'" + etPassword.getText().toString());
         //if(isValidUsername(etUsername.getText().toString()) && isValidPassword(etPassword.getText().toString()))
-        if (isValidUser(user, pass))
+        if (isValidUser(user, pass) == true)
         {
             sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -80,17 +80,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
 
     }
 
-    public boolean isValidUser(String userName,String password){
-        UserData dbData= dbHandler.findUser(userName);
-        Log.v(TAG, "Running Checks... ..."+dbData.getMyUserName()+": "+dbData.getMyPassword()
-                +"vs"+userName+": "+password);
-        if(dbData != null &&dbData.getMyUserName().equals(userName)&&dbData.getMyPassword().equals(password)){
-            return true;
-        }
-        else{
-           return false;
+    public boolean isValidUser(String username, String password){
+        UserData dbDataUser = dbHandler.findUser(username);
 
+        try{
+            if (dbDataUser.getMyUserName().equals(username) && dbDataUser.getMyPassword().equals(password)){
+                return true;
+            }
         }
+        catch(Exception e){
+            return false;
+        }
+        return false;
     }
 
 }
